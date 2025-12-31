@@ -2,4 +2,6 @@
 
 from grid_universe.moves import cardinal_move_fn as cardinal_move_fn  # re-export
 
-move_fn = cardinal_move_fn
+moves = {
+    "cardinal": cardinal_move_fn,
+}
