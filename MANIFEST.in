@@ -1,0 +1,11 @@
+# Include the license and readme
+include LICENSE
+include README.md
+
+# Include the entire assets directory tree in the source distribution
+recursive-include grid_adventure/assets *
+
+# Ensure no __pycache__ directories or compiled files are included
+prune **/__pycache__
+exclude **/*.py[co]
+exclude **/.DS_Store

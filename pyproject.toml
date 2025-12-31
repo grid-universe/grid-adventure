@@ -1,0 +1,52 @@
+[project]
+name = "grid-adventure"
+version = "0.1.0"
+description = "A gridworld puzzle-adventure game built on the Grid Universe engine"
+authors = [{ name = "Muhammad Rizki Maulana", email = "rizki@rizkiarm.com" }]
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+
+dependencies = [
+    "grid-universe @ git+https://github.com/rizkiarm/grid-universe.git",
+    "pyrsistent>=0.20.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "mypy", "ruff"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["grid_adventure*"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"grid_adventure" = ["assets/**"]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+addopts = "--cov=grid_adventure --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["grid_adventure"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+files = "grid_adventure"
+strict = true
+pretty = true
