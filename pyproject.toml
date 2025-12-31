@@ -8,12 +8,15 @@ requires-python = ">=3.11"
 license = { file = "LICENSE" }
 
 dependencies = [
-    "grid-universe @ git+https://github.com/rizkiarm/grid-universe.git",
+    "grid-universe @ git+https://github.com/grid-universe/grid-universe.git",
     "pyrsistent>=0.20.0",
 ]
 
 [project.optional-dependencies]
 dev = ["pytest", "pytest-cov", "mypy", "ruff"]
+test = [
+    "grid-play @ git+https://github.com/grid-universe/grid-play.git"
+]
 
 [tool.setuptools.packages.find]
 where = ["."]
