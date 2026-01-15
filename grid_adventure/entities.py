@@ -142,7 +142,7 @@ class WallEntity(BlockingEntity):
 
 
 @dataclass(repr=False)
-class ExitEntity(CollidableEntity):
+class ExitEntity(BaseEntity):
     appearance: Appearance = Appearance(name="exit", priority=9)
     exit: Exit = Exit()
 
