@@ -37,7 +37,7 @@ def level_env() -> Iterator[GridAdventureEnv]:
 @pytest.fixture
 def make_temp_assets(tmp_path: Path) -> Callable[[dict[str, str]], str]:
     """
-    Create a minimal asset directory structure for a subset of TEXTURE_MAP entries.
+    Create a minimal asset directory structure for a subset of IMAGE_MAP entries.
     Pass a dict mapping logical name -> filename stem; generates tiny RGBA PNGs.
     Returns the asset root path.
     """
@@ -46,7 +46,7 @@ def make_temp_assets(tmp_path: Path) -> Callable[[dict[str, str]], str]:
         root = tmp_path / "assets"
         root.mkdir(parents=True, exist_ok=True)
 
-        # Create per-appearance dirs or files matching Grid Adventure TEXTURE_MAP
+        # Create per-appearance dirs or files matching Grid Adventure IMAGE_MAP
         # We generate 16x16 opaque squares for simplicity.
         for stem in set(asset_names.values()):
             # Image file
