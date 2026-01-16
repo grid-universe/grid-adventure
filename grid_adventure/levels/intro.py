@@ -180,12 +180,18 @@ def build_level_hazard_detour(seed: int = 106) -> Level:
         turn_limit=TURN_LIMIT,
     )
     _floors(level)
-    level.add((1, h // 2), create_agent_entity())
+    level.add((1, h // 2), create_agent_entity(health=3))
     level.add((w - 2, h // 2), ExitEntity())
     level.add((w // 2 - 1, h // 2), LavaEntity())
+    level.add((w - 3, h // 2), LavaEntity())
+
     for y in range(1, h - 1):
         if y != h // 2:
             level.add((w // 2 - 1, y), WallEntity())
+    for y in range(2, h - 2):
+        if y != h // 2:
+            level.add((w - 3, y), WallEntity())
+    
     return level
 
 
@@ -244,10 +250,8 @@ def build_level_power_ghost(seed: int = 111) -> Level:
     level.add((1, h // 2), create_agent_entity())
     level.add((w - 2, h // 2), ExitEntity())
     for y in range(h):
-        if y != h // 2:
-            level.add((w // 2, y), WallEntity())
+        level.add((w // 2, y), WallEntity())
     level.add((2, h // 2 - 3), PhasingPowerUpEntity())
-    level.add((w // 2, h // 2), LockedDoorEntity())
     return level
 
 
@@ -273,7 +277,7 @@ def build_level_power_boots(seed: int = 112) -> Level:
     return level
 
 
-def build_level_capstone(seed: int = 113) -> Level:
+def build_level_capstone_simple(seed: int = 113) -> Level:
     level = Level(
         width=7,
         height=7,
@@ -323,5 +327,63 @@ def build_level_capstone(seed: int = 113) -> Level:
 
     # Exit
     level.add((6, 6), ExitEntity())
+
+    return level
+
+def build_level_capstone_advanced(seed: int = 113) -> Level:
+    level = Level(
+        width=7,
+        height=7,
+        move_fn=cardinal_move_fn,
+        objective_fn=collect_and_exit_objective_fn,
+        seed=seed,
+        turn_limit=TURN_LIMIT,
+    )
+    _floors(level)
+
+    # Agent and Exit
+    level.add((0, 0), create_agent_entity(health=1))
+    level.add((0, 6), ExitEntity())
+
+    # Walls
+    wall_pos = [
+        (3, 0),
+        (0, 1), (1, 1), (3, 1), (5, 1),
+        (3, 2), (5, 2),
+        (1, 3),
+        (1, 4), (3, 4), (5, 4),
+        (1, 5), (2, 5), (3, 5), (5, 5),
+    ]
+    for p in wall_pos:
+        level.add(p, WallEntity())
+
+    # Pushable box
+    level.add((2, 1), BoxEntity())
+
+    # Gems
+    level.add((0, 5), GemEntity())
+    level.add((6, 3), GemEntity())
+
+    # Coins
+    coin_pos = [
+        (1, 2), (4, 2),
+        (3, 3),
+        (6, 5),
+        (2, 6), (3, 6)
+    ]
+    for p in coin_pos:
+        level.add(p, CoinEntity())
+
+    # Powerups
+    level.add((0, 2), SpeedPowerUpEntity())
+    level.add((2, 3), PhasingPowerUpEntity())
+    level.add((4, 0), ShieldPowerUpEntity())
+
+    # Key-door pair
+    level.add((4, 4), KeyEntity())
+    level.add((1, 6), LockedDoorEntity())
+
+    # Hazards
+    level.add((5, 3), LavaEntity())
 
     return level
