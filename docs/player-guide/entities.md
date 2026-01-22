@@ -1,102 +1,104 @@
+All objects available in Grid-Adventure-V1 are shown below. Each entity is displayed in five slightly different visuals. Many other appearances exist that are similar but differ subtly from those shown.
+
 ## Floor
 
-![Floor](../assets/floor.png)
+![Floor](../assets/floors.png)
 
 **Description:**
-Floor is the basic tile of the grid. Other entities can be present on Floor tiles.
+Floor is the basic tile of the grid. Other entities can be present on floor tiles.
 
 
 ## Agent
 
-![Agent](../assets/human.png)
+![Agent](../assets/humans.png)
 
 **Description:**  
-The Agent is the character that you will control and play as. You will move around the grid and aim to complete the objective. Agent starts with predetermined Health points. Reducing Agent HP results in a game loss.
+Agent is the character that you will control and play as. It appears in the grid as a human. You will move around the grid, interact with objects and aim to complete the objective.
 
-In 1 turn, an Agent can either move to an orthogonally adjacent tile (Up/Down/Left/Right), pickup a Collectible item or use a Key to unlock a Door.
-Every move that an Agent takes in the game is associated with a uniform Cost. This includes wasted moves such as attempting to move into a Wall. The player should aim to meet the objective with lowest Cost incurred.
+In 1 turn, the Agent can either move to an adjacent tile (Up/Down/Left/Right), pickup a item or use a key to unlock a door.
+The agent starts with some health points and you will lose if the HP drops to 0.
 
 ## Wall
 
-![Wall](../assets/wall.png)
+![Wall](../assets/walls.png)
 
 **Description:**
 
-Walls can be present on the grid and restrict movement of the Agent.
-A Wall is a Blocking entity and Agent will not be able to move onto a tile containing a Wall.
+Walls can be present on the grid and blocks the agent from moving past it.
 
 ## Exit
 
-![Exit](../assets/exit.png)
+![Exit](../assets/exits.png)
 
 **Description:**  
-This is the final escape tile that Agent needs to land on to complete the objective.
+This is the final escape tile that the agent needs to land on to complete the objective.
 
 ## Coin
 
-![Coin](../assets/coin.png)
+![Coin](../assets/coins.png)
 
 **Description:**  
-Coin is a Collectible and Rewardable entity. Agent may collect the coin to reduce total Cost by 5. Note that picking up still incurs cost of 3, so total Cost is reduced by 2.
+Coin is a optional item that can be picked up on the grid. The agent may collect the coin to reduce total cost by 5.
 
 
 ## Gem
 
-![Gem](../assets/gem.png)
+![Gem](../assets/gems.png)
 
 **Description:**  
-Gem is a Collectible and Required entity. Agent needs to collect all gems present in the grid before moving to Exit to complete the objective.
+Gem is an item on the grid that needs to be picked up. If there are any gems present, all of them need to be collected by the agent before moving to the exit tile to complete the objective.
 
 ## Key
 
-![Key](../assets/key.png)
+![Key](../assets/keys.png)
 
 **Description:** 
-Key is a Collectible entity. Agent can collect the Key which is needed to unlock a Door. To unlock the Door, the Agent needs to be orthogonally adjacent to a locked door and use the Key to unlock it.
+Key is an optional item on the grid that can be picked up by the agent. A key is required to unlock a door. Any key can be used to unlock a door, but each key can only be used once.
 
 ## Door
 
-![Locked_Door](../assets/locked_door.png)
+![Locked_Door](../assets/locked_doors.png)
 
 **Description:**
-A locked Door is a Blocking entity. Agent will not be able to pass through it. If a Key is used to unlock it, it becomes a unlocked door ![Unlocked_Door](../assets/opened_door.png) and is no longer Blocking.
+A locked door blocks the agent from moving past it. To unlock a door, the agent first needs to collect a key. Using the key while standing adjacent to the door unlocks it and it becomes an unlocked door. The agent can freely pass through unlocked doors. Unlocked doors appear on the grid as shown below.
+![Unlocked_Door](../assets/unlocked_doors.png)
 
 
 ## Box
 
-![Box](../assets/box.png)
+![Box](../assets/boxes.png)
 
 **Description:**
-Box is a Blocking and Pushable entity. You are not able to pass through a Box but you can push it onto a free tile. A Box can be pushed onto a tile if there is no Blocking entity present in that tile. To push a box, the Agent needs to be orthogonally adjacent to the Box and attempt to move in the desired direction to push the Box. Note that both the Agent and the Box will move during this action.
+Box is an item on the grid that can be moved by the agent. The agent can push a box in any direction onto a free tile. Boxes cannot be pushed onto walls, doors or lava.
 
 ## Lava
 
-![Lava](../assets/lava.png)
+![Lava](../assets/lavas.png)
 
 **Description:**
-Lava tiles have Damage associated with them. When the Agent lands on a Lava tile, 1 damage is dealt to it. The Agent loses if HP drops to 0.
+Lava tiles inflict damage to the agent. When the agent lands on lava, 2 damage is dealt. The player loses if agent HP drops to 0.
 
 ## Powerups
-Powerups are Collectible entities that are present in the grid. Each powerup is associated with a usage limit.
 
-## Speed
+Powerups can also be present on the grid and can be picked up by the agent if wanted. They provide a boost and are associated with a turn or usage limit.
 
-![Speed](../assets/boots_powerup.png)
+## Powerup-Speed
 
-**Description:**
-The Speed powerup allows the Agent to move 2 tiles in 1 turn. It lasts for 5 turns. 
-Agent can still be blocked by any Blocking entities in the way. If the Agent passes through or lands on Lava tiles, Damage is still taken accordingly.
-
-## Shield
-
-![Shield](../assets/shield_powerup.png)
+![Speed](../assets/boots.png)
 
 **Description:**
-Shield gives the Agent Immunity. It has a usage limit of 5. When the Agent passes through or lands on a Lava tile, the Agent does not take Damage but loses 1 use of the powerup instead.
+The speed powerup allows the agent to move 2 tiles in 1 turn. It has a 5 turn limit. Note that the agent can still be blocked by any objects in its way.
 
-## Ghost
+## Powerup-Shield
 
-![Ghost](../assets/ghost_powerup.png)
+![Shield](../assets/shields.png)
 
 **Description:**
-Ghost gives the Agent Phasing. It lasts for 5 turns. While active, the Agent cannot be blocked by any Blocking entities. The Agent does not take Damage from tiles as well.
+Shield protects the agent from damage taken. It has a usage limit of 5. The shield is used once every time the agent lands on lava.
+
+## Powerup-Ghost
+
+![Ghost](../assets/ghosts.png)
+
+**Description:**
+Ghost allows the agent to move through objects. It has a turn limit of 5. While the powerup is active, the agent can move through walls and doors. The agent does not take damage from lava as well.

@@ -1,66 +1,55 @@
 ## Basic movements
 
-In a turn, the Agent can move to an orthogonally adjacent tile (Up/Down/Left/Right)
+In a turn, the agent can move to adjacent tiles (Up/Down/Left/Right)
 
-#### Demo
+The demo shows the agent performing basic movements.
 
-The demo shows the Agent performing a move up action.
+![Basic_Movement](../assets/basic_movement.gif)
 
-![Start](../assets/start.png)
-![Up](../assets/up.png)
+## Collecting items
 
-## Collectibles
+If the agent is on the same tile as any collectible items, the Agent can use a turn to pick it up.
 
-If an Agent is on the same tile as a Collectible entity, the Agent can use a turn to collect it.
+The demo shows the agent picking up items such as keys, gems and coins.
 
-#### Demo
-
-The Agent starts beside a Collectible Gem.
-
-![Collect_Start](../assets/collectible_start.png)
-
-The Agent performs a move to the right to stand on the same tile as the Gem.
-
-![Collect_Sametile](../assets/collectible_same_tile.png)
-
-Now, the Agent can perform a collect action to pick up the gem. It is added to inventory.
-
-![Collected](../assets/collected.png)
+![Collect_items](../assets/collect_items.gif)
 
 ## Key and Door
 
-To unlock a door, the Agent must first collect a Key, then move to and unlock the door.
+To unlock a door, the agent must first collect a key, then move to and unlock the door from an adjacent tile.
 
-#### Demo
+The demo shows the agent collecting the key, then unlocking the door to be able to pass through.
 
-The Agent starts on the same tile as the Collectible Key. Agent can collect it.
-![Key_Tile](../assets/key_tile.png)
-![Collect_Key](../assets/collect_key.png)
+![Key_Door](../assets/key_and_door.gif)
 
-To unlock the door, the Agent first needs to move adjacent to the door. Agent moves 2 steps to the right and 1 step down.
+## Box
 
-![Beside_Door](../assets/beside_door.png)
+To push a box, Agent needs to stand adjacent to the Box and move in the direction to push the Box.
 
-Then, the Agent uses the Key to unlock the door.
+The demo shows the agent pushing the box aside to be able to reach the exit tile.
 
-![Unlock_Door](../assets/unlocked%20door.png)
+![Push_Box](../assets/push_box.gif)
 
-The door is no longer blocking and Agent is able to move onto the tile with the Door.
+## Powerup-Speed
 
-![Door_Tile](../assets/door_tile.png)
+Speed allows the agent to move 2 tiles in 1 turn. It lasts for 5 turns.
 
+The demo shows the agent movement once boots are picked up. Note that walls can still restrict the agent from moving 2 tiles. After 5 turns, the agent exhausts the powerup and returns to 1 tile per turn.
 
-## Pushable Box
+![Boots_Movement](../assets/boots_movement.gif)
 
-To push a box, Agent needs to stand adjacent to the Box and attempt to move in the direction to push the Box.
+## Powerup-Shield
 
-#### Demo
+Shield allows the agent to move through lava without taking damage. It has 5 uses.
 
-The Agent starts to the left of the box as shown in the grid.
+In this demo, the agent health has been set to 1, so landing on lava will result in a loss. Thus, the agent collects the shield powerup to pass through 3 lava tiles and reach the exit.
 
-![Box_Start](../assets/box_start.png)
+![Shield_Movement](../assets/shield_movement.gif)
 
-Now, if the Agent attempts to move to the right, the Box will be pushed and Agent will move to the right.
+## Powerup-Ghost
 
-![Box_Pushed](../assets/box_pushed.png)
+Ghost powerup allows the agent to move through objects such as walls and doors. It lasts for 5 turns.
 
+In this demo, the agent collects the ghost powerup to pass through the walls and reach the exit tile.
+
+![Ghost_Movement](../assets/ghost_movement.gif)
