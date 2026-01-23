@@ -149,10 +149,10 @@ def specialize_entities(gridstate: GridState) -> GridState:
 
     # First pass: specialize and map original object id -> new specialized object
     obj_map: dict[int, BaseEntity] = {}
-    for y in range(gridstate.height):
-        for x in range(gridstate.width):
+    for x in range(gridstate.width):
+        for y in range(gridstate.height):
             specialized_cell: list[BaseEntity] = []
-            for orig_obj in gridstate.grid[y][x]:
+            for orig_obj in gridstate.grid[x][y]:
                 spec_obj = _specialize_single(orig_obj)
 
                 # Specialize nested lists if attributes exist (inventory_list, status_list)
@@ -173,13 +173,13 @@ def specialize_entities(gridstate: GridState) -> GridState:
 
                 obj_map[id(orig_obj)] = spec_obj
                 specialized_cell.append(spec_obj)
-
-            new_grid_state.grid[y][x] = specialized_cell
+            for spec_obj in specialized_cell:
+                new_grid_state.add((x, y), spec_obj)
 
     # Second pass: remap cross-entity references to specialized targets/pairs
-    for y in range(new_grid_state.height):
-        for x in range(new_grid_state.width):
-            for spec_obj in new_grid_state.grid[y][x]:
+    for x in range(new_grid_state.width):
+        for y in range(new_grid_state.height):
+            for spec_obj in new_grid_state.grid[x][y]:
                 # pathfind_target_ref
                 if hasattr(spec_obj, "pathfind_target_ref"):
                     old_ref = getattr(spec_obj, "pathfind_target_ref", None)

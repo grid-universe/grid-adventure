@@ -12,13 +12,13 @@ from grid_adventure.grid import step
 
 def _find_entities_at(gridstate: GridState, pos: tuple[int, int]) -> list[object]:
     x, y = pos
-    return list(gridstate.grid[y][x])
+    return list(gridstate.grid[x][y])
 
 
 def _find_agent_pos(gridstate: GridState) -> tuple[int, int] | None:
-    for y in range(gridstate.height):
-        for x in range(gridstate.width):
-            for obj in gridstate.grid[y][x]:
+    for x in range(gridstate.width):
+        for y in range(gridstate.height):
+            for obj in gridstate.grid[x][y]:
                 if isinstance(obj, AgentEntity):
                     return (x, y)
     return None

@@ -45,8 +45,8 @@ from grid_adventure.entities import (
 
 
 def _flatten(gridstate: GridState):
-    for y, row in enumerate(gridstate.grid):
-        for x, cell in enumerate(row):
+    for x, col in enumerate(gridstate.grid):
+        for y, cell in enumerate(col):
             for obj in cell:
                 yield (x, y, obj)
 
@@ -341,7 +341,7 @@ def test_specialize_roundtrip_preserves_types_and_coordinates():
     # Helper for lookups by coord
     def types_at(pos: tuple[int, int]) -> set[str]:
         x, y = pos
-        return {type(obj).__name__ for obj in roundtrip_level.grid[y][x]}
+        return {type(obj).__name__ for obj in roundtrip_level.grid[x][y]}
 
     # Expected types per coordinate after roundtrip
     expected = {
