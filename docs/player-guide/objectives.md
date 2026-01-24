@@ -1,12 +1,12 @@
-The objective for Grid-Adventure-V1 is to complete the following tasks:
+The objective for Grid Adventure: Variant 1 is to complete the following tasks:
 
 - If any Gems are present in the grid, collect all of them  
 - Move to the Exit tile
 
 ## Optimal Solution
 
-An optimal solution is one that achieves all objectives with the lowest total cost.
+An optimal solution is one that achieves all objectives with the highest reward. There is no requirement to complete the objective with nonnegative reward or highest HP possible. To achieve a higher reward, the agent would need to either complete with fewer turns taken or more coins collected.
 
-### Cost
-- Each turn taken by the Agent incurs a uniform cost of 3
-- Each Coin collected reduces the total cost by 5
+### Reward
+- Each turn taken by the Agent has a reward of -3.
+- Each Coin collected has a reward of 5.

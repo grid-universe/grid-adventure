@@ -1,6 +1,6 @@
-Welcome to Grid-Adventure-V1.
+Welcome to Grid Adventure: Variant 1.
 
-Grid-Adventure-V1 is a flexible, grid‑based game in which you implement an agent that interacts with diverse gameplay mechanics to fulfil objectives.
+Grid Adventure: Variant 1 is a flexible, grid‑based game in which you implement an agent that interacts with diverse gameplay mechanics to fulfil objectives.
 
 The world is represented as a 2D grid made up of tiles. The agent can start at any location in the grid and needs to work towards collecting gems if any, and to move to the escape tile.
 

@@ -2,6 +2,8 @@ site_name: Grid-Adventure1 Documentation
 
 theme:
   name: material
+  features:
+    - navigation.tabs
 
 nav:
   - Home: index.md
@@ -10,3 +12,10 @@ nav:
       - Entities: player-guide/entities.md
       - Objectives: player-guide/objectives.md
       - Movements: player-guide/movements.md
+  - Developer Documentation:
+        - Grid Adventure Enviroment: developer_documentation/grid_adventure_enviroment.md 
+        - Game Representation: developer_documentation/game_representation.md 
+        - Entity Classes: developer_documentation/entities.md
+        - Action Classes: developer_documentation/action.md
+        - Agent Class: developer_documentation/agent.md
+
