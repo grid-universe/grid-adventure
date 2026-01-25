@@ -119,13 +119,13 @@ This is a Collectible required to unlock a [LockedDoorEntity](#lockeddoorentity)
 
 |Attribute|Type|Description|
 |---|---|---|
-|key|Key Class|Key class that saves key_id matching that of LockedDoorEntity|
+|key|Key Class|Key class that can be used to unlock LockedDoorEntity|
 
-Note: Each level can only have up to 1 key - door pair. For each door, it is gauranteed a key exists and vice-versa.
+Note: Any key present in the grid can be used to unlock a door, but each key can only be used once.
 
 &nbsp;
 ## SpeedPowerUpEntity
-This is a collectible granting agent the ability to walk a multiple of tiles in 1 turn for a duration of time.
+This is a collectible granting agent the ability to walk 2 tiles in 1 turn for a duration of time.
 
 |Attribute|Type|Description|
 |---|---|---|
