@@ -4,7 +4,10 @@ theme:
   name: material
   features:
     - navigation.tabs
-
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
 nav:
   - Home: index.md
   - Player Guide:
@@ -12,10 +15,12 @@ nav:
       - Entities: player-guide/entities.md
       - Objectives: player-guide/objectives.md
       - Movements: player-guide/movements.md
-  - Agent Guide:
-        - Grid Adventure Enviroment: agent-guide/grid_adventure_enviroment.md 
-        - Game Representation: agent-guide/game_representation.md 
-        - Entity Classes: agent-guide/entities.md
-        - Action Classes: agent-guide/action.md
-        - Agent Class: agent-guide/agent.md
+  - Agent Documentation:
+        - Grid Adventure Enviroment: agent-doc/grid_adventure_enviroment.md 
+        - Game Representation: agent-doc/game_representation.md
+        - Observation Representation: agent-doc/observation.md
+        - Entity Classes: agent-doc/entities.md
+        - Action Classes: agent-doc/action.md
+        - Agent Class: agent-doc/agent.md
+        - State Representation: agent-doc/state.md
 

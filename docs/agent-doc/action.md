@@ -18,7 +18,7 @@ The `Action` enum defines all available player actions.
 Actions are primarily used with the step function of [GridAdventureEnv](grid_adventure_enviroment.md#methods).
 ```python
 # Import
-from grid_universe.actions import Action
+from grid_adventure.actions import Action
 
 # Using Action enum with enviroment
 obs, reward, terminated, truncated, info = env.step(Action.UP)

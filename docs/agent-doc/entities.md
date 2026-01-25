@@ -1,5 +1,8 @@
 # Entities
 
+## Warning on Entities.
+The Entities in Grid Adventure has been created so as to make them consistent. All entities, with the exception of `AgentEntity`, of the same class will be uniform. That is to say their underlying attributes are constant, and there is no need to check them for the purposes of the Capstone Project. 
+
 &nbsp;
 ## Entity Types
 There are in general 5 types of Entities
@@ -27,7 +30,6 @@ This is the entity controlled by the user.
 
 |Attribute|Type|Description|
 |---|---|---|
-|appearance|Appearance Class|Human Appearance|
 |health|Health Class|Health to give the agent, constitutes Max and current health|
 |inventory|Inventory Class|List of Entity that represents the Agents inventory|
 |status|Status Class|List of Entity that represebts the Status Active on Agent|
@@ -40,11 +42,7 @@ This is the entity controlled by the user.
 ## Lava Entity
 This is a damaging entity that the agent can walk through
 
-|Attribute|Type|Description|
-|---|---|---|
-|appearance|Appearance Class|Lava Appearance|
-|damage|Damage Class|How much health the agent should lose walking through|
-
+Note: Lava has a fixed Damage
 
 &nbsp;
 
@@ -61,11 +59,13 @@ Note that the Box is also a PushableEntity.
 
 &nbsp;
 ## WallEntity
-This is a wall entity that the agent cannot walk through nor push
+This is a wall entity that the agent cannot walk through nor push. The wall entity has no atributes.
 
-|Attribute|Type|Description|
-|---|---|---|
-|appearance|Appearance Class|Wall Appearance|
+&nbsp;
+## BoxEntity
+This is a movable blocking entity, that the agent can push but not walk through. The box entity has no attributes.
+
+Note: that the box is also a Pushable Entity
 
 &nbsp;
 ## LockedDoorEntity
@@ -73,20 +73,9 @@ This is a blocking entity that the agent cannot through nor push. This entity be
 
 |Attribute|Type|Description|
 |---|---|---|
-|appearance|Appearance Class|Door Appearance|
 |locked|Locked Class|Locked class that saves the key_id matching that of KeyEntity|
 
-Note: Each level can only have up to 1 door. For each door, it is gauranteed a key exists.
-
-&nbsp;
-## BoxEntity
-This is a movable blocking entity, that the agent can push but not walk through.
-
-|Attribute|Type|Description|
-|---|---|---|
-|appearance|Appearance Class|Box Appearance|
-
-Note that the box is also a Pushable Entity
+Note: Each level can only have up to 1 key - door pair. For each door, it is gauranteed a key exists and vice-versa.
 
 &nbsp;
 
@@ -94,7 +83,6 @@ Note that the box is also a Pushable Entity
 This are entities which are pushable by the Agent. These entities are recognisable for possession of `pushable` attribute of `Pushable` class. 
 
 There is only 1 relevant PushableEntity, it is the BoxEntity. For documentation of box, see the [BoxEntity](#boxentity).
-
 
 &nbsp;
 
@@ -112,21 +100,18 @@ There are in total 6 relevant CollectibleEntity.
 
 &nbsp;
 ## CoinEntity
-This is an optional collectible that provides a score when collected by the agent.
+This is an **optional** collectible that provides a score when collected by the agent. 
 
 |Attribute|Type|Description|
 |---|---|---|
-|appearance|Appearance Class|Coin Appearance|
 |rewardable|Rewardable Class|The score provided for picking up the coin|
+
+Note: Score received for collecting a coin is fixed at 5.
 
 &nbsp;
 ## GemEntity
-This is a compulsary Collectible to be collected by agent before it can enter the exit.
+This is a **compulsary** Collectible to be collected by agent before it can enter the exit. The GemEntity has no attributes.
 
-|Attribute|Type|Description|
-|---|---|---|
-|appearance|Appearance Class|Gem Appearance|
-|requireable|Requirable Class|Attribute to indicate to engine required collectible|
 
 &nbsp;
 ## KeyEntity
@@ -134,8 +119,9 @@ This is a Collectible required to unlock a [LockedDoorEntity](#lockeddoorentity)
 
 |Attribute|Type|Description|
 |---|---|---|
-|appearance|Appearance Class|Key Appearance|
 |key|Key Class|Key class that saves key_id matching that of LockedDoorEntity|
+
+Note: Each level can only have up to 1 key - door pair. For each door, it is gauranteed a key exists and vice-versa.
 
 &nbsp;
 ## SpeedPowerUpEntity
@@ -143,9 +129,11 @@ This is a collectible granting agent the ability to walk a multiple of tiles in 
 
 |Attribute|Type|Description|
 |---|---|---|
-|appearance|Appearance Class|Boot Appearance|
 |speed|Speed Class|Speed class that saves multiplier, indicating speed up provided|
 |time_limit|TimeLimit Class|TimeLimit class that saves amount, indicating number of turns powerup is active|
+
+Note: Speed multiplier is a constant at 2.
+Note: Time limit is a constant at 5 steps.
 
 &nbsp;
 ## ShieldPowerUpEntity
@@ -153,9 +141,9 @@ This is a collectible granting agent immunity while walking on damaging tiles fo
 
 |Attribute|Type|Description|
 |---|---|---|
-|appearance|Appearance Class|Shield Appearance|
-|immunity|Immunity Class|Default Immunity class|
 |time_limit|TimeLimit Class|TimeLimit class that saves amount, indicating number of turns powerup is active|
+
+Note: Time limit is a constant at 5 steps.
 
 &nbsp;
 ## PhasingPowerUpEntity
@@ -163,36 +151,28 @@ This is a collectible granting agent ability to walk through [BlockingEntity](#b
 
 |Attribute|Type|Description|
 |---|---|---|
-|appearance|Appearance Class|Ghost Appearance|
-|phasing|Phasing Class|Default Phasing class|
 |time_limit|TimeLimit Class|TimeLimit class that saves amount, indicating number of turns powerup is active|
+
+Note: Time limit is a constant at 5 steps.
 
 &nbsp;
 #Other Entities
 These Entities extend directly from BaseEntity. They are either non interactable entities which are purely for aesthetic purposes, or in the case of ExitEntity & FloorEntity, entities with special purposes.
 
 &nbsp;
-##ExitEntity
-This are unique Exit Entity and serve as the exit objective
-
-|Attribute|Type|Description|
-|---|---|---|
-|appearance|Appearance Class|Exit Appearance|
-|exit|Exit Class|Default Exit Constructor|
+## ExitEntity
+This are unique Exit Entity and serve as the exit objective. The ExitEntity has no other attribtues.
 
 &nbsp;
-##FloorEntity 
+## FloorEntity 
 Floor entities are not interactable with agent. They also serve the unique purpose of introducing cost for walking over tiles.
 
 |Attribute|Type|Description|
 |---|---|---|
-|appearance|Appearance Class|Floor Appearance|
 |cost|Cost Class|Cost of walking across the floor|
+
+Note: Cost for each floor tile is a constant at 3.
 
 &nbsp;
 ##UnlockedDoorEntity 
-UnlockedDoorEntity are not interactable with agent, serving only aesthetic purpose. They are the unlocked version of the [LockedDoorEntity](#lockeddoorentity)
-
-|Attribute|Type|Description|
-|---|---|---|
-|appearance|Appearance Class|Door Appearance|
+UnlockedDoorEntity are not interactable with agent, serving only aesthetic purpose. They are the unlocked version of the [LockedDoorEntity](#lockeddoorentity). The UnlockedDoorEntity has no attributes.
